@@ -39,7 +39,7 @@ mongoose
   .then(() => console.log("MongoDB Connected!"))
   .then(() => {
     const PORT = process.env.PORT || 5000;
-    const HOST = process.env.HOST || "127.0.0.1";
+    const HOST = process.env.HOST || "0.0.0.0";
     http.listen(PORT, HOST, () => {
       console.log(`Server Started on http://${HOST}:${PORT}`);
     });
