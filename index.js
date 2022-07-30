@@ -9,12 +9,9 @@ const morgan = require("morgan");
 const io = require("socket.io")(http, {
   cors: {
     origin: [
-      "https://propertyyards-customer-app.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001",
       "http://http://127.0.0.1:5000",
-      "https://www.propertyyards.com",
-      "https://propertyyards-agent-app.vercel.app",
     ],
   },
 });
@@ -31,13 +28,7 @@ const { database } = require("./config/keys");
 app.use(express.json({ limit: "50mb", extended: true }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 const corsOptions = {
-  origin: [
-    "https://propertyyards-customer-app.vercel.app",
-    "http://localhost:3000",
-    "http://localhost:3001",
-    "https://www.propertyyards.com",
-    "https://propertyyards-agent-app.vercel.app",
-  ],
+  origin: ["http://localhost:3000", "http://localhost:3001"],
   credentials: true,
   optionsSuccessStatus: 200,
 };
