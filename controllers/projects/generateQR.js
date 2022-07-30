@@ -1,9 +1,22 @@
 const qr = require("qrcode");
+const User = require("../../models/user/User.model");
+const createError = require("http-errors");
 
 const generateQR = async (req, res, next) => {
+  const { id } = req.body;
   try {
+    const checkUser = await User.findOne({
+      _id: id,
+    });
+
+    if (!checkUser) {
+      throw createError.Unauthorized(
+        "Please try again! email / password is not correct"
+      );
+    }
+
     let data = {
-      id: 1,
+      id: checkUser?._id,
       name: "User",
       email: "user@gmail.com",
     };
