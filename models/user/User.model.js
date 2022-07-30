@@ -4,37 +4,23 @@ const userSchema = new Schema(
   {
     name: { type: String, required: true },
     primary_email: { type: Schema.Types.ObjectId, ref: "ContactMech" },
-    popular: { type: Boolean, default: false },
-    // TODO: Make it required true
-    is_active: {
-      type: String,
-      default: "Pending",
-      enum: ["Pending", "Accepted", "Rejected"],
-    },
-
     address: {
       state: { type: String },
       city: { type: String },
       officeAddress: { type: String },
     },
-    interests: {
-      specialization: { type: String },
-      languagePreference: { type: String },
-      interest: { type: String },
+    phonumber: {
+      countryCode: { type: String },
+      number: { type: String },
     },
-    companyName: { type: String },
-    experience: { type: String },
-    reraNumber: { type: String, unique: true },
-    employees: { type: String },
+    jobTitle: { type: String },
     type: [
       {
         type: String,
         default: ["customer"],
         enum: ["customer", "developer", "agent", "builder"],
-        // required: isUser,
       },
     ],
-    is_verified: { type: Boolean, required: true, default: false },
     role: { type: String, default: "user", enum: ["user", "admin"] },
   },
   {
