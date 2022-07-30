@@ -8,7 +8,7 @@ const generateQR = async (req, res, next) => {
     //   link: `http://127.0.0.1:5000?q=${id}`,
     // };
 
-    let strData = JSON.stringify(`http://127.0.0.1:5000?q=${id}`);
+    let strData = JSON.stringify(`http://127.0.0.1:5000/${id}`);
 
     qr.toString(strData, { type: "terminal" }, function (err, code) {
       if (err) return console.log("error occurred");
