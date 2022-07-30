@@ -19,7 +19,7 @@ router.put("/updateTask/:id", updateTask);
 router.get("/generateQR", generateQR);
 
 //timeSheet
-router.put("/updateTime/:id", updateTimeSheet);
-router.put("/getTime/:id", getTimeSheetEnable);
+router.put("/updateTime", updateTimeSheet);
+router.get("/getTime", getTimeSheetEnable);
 
 module.exports = router;

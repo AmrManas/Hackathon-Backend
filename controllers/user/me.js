@@ -8,6 +8,7 @@ const me = async (req, res) => {
     user: {
       _id: user._id,
       name: user.name,
+      is_time_active: user.is_time_active,
       role: user.role,
       type: user.type,
       email: user.primary_email.contact_mech_value,
