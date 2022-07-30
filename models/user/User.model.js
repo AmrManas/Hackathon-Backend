@@ -4,23 +4,23 @@ const userSchema = new Schema(
   {
     name: { type: String, required: true },
     primary_email: { type: Schema.Types.ObjectId, ref: "ContactMech" },
+    accessToken: { type: String },
     address: {
       state: { type: String },
       city: { type: String },
       officeAddress: { type: String },
+    },
+    is_time_active: { type: Boolean, default: false },
+    timeSheet: {
+      date: { type: Date },
+      inTime: { type: Date },
+      outTime: { type: Date },
     },
     phonumber: {
       countryCode: { type: String },
       number: { type: String },
     },
     jobTitle: { type: String },
-    type: [
-      {
-        type: String,
-        default: ["customer"],
-        enum: ["customer", "developer", "agent", "builder"],
-      },
-    ],
     role: { type: String, default: "user", enum: ["user", "admin"] },
   },
   {
@@ -31,8 +31,3 @@ const userSchema = new Schema(
 const User = model("User", userSchema, "user");
 
 module.exports = User;
-
-// function isUser() {
-//   if (this.role === "user") return true;
-//   return false;
-// }

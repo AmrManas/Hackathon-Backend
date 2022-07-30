@@ -4,6 +4,8 @@ const createError = require("http-errors");
 const User = require("../../models/user/User.model");
 const UserLoginMech = require("../../models/UserLoginMech.model");
 const Token = require("../../models/Token.model");
+var ObjectId = require("mongoose").Types.ObjectId;
+
 const {
   generateAccessToken,
   generateRefreshToken,
@@ -48,6 +50,11 @@ const loginUser = async (req, res, next) => {
         refreshToken: refreshToken,
       });
       token.save();
+      console.log(userLogin.user);
+      let userD = await User.findOne({ _id: ObjectId(userLogin.user) });
+      console.log("trueornot", userD);
+      userD.accessToken = accessToken;
+      await userD.save();
 
       res.status(200).json({
         success: true,
