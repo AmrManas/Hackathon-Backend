@@ -11,6 +11,7 @@ const me = async (req, res) => {
       role: user.role,
       type: user.type,
       email: user.primary_email.contact_mech_value,
+      accessToken: user.accessToken,
       address: {
         state: user.address.state,
         city: user.address.city,

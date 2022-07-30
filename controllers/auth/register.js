@@ -17,7 +17,7 @@ const registerUser = async (req, res, next) => {
   const { payload } = req.headers;
 
   const decoded = Buffer.from(payload, "base64").toString().split(":");
-  [this.name, this.email, this.password, this.type, this.role] = decoded;
+  [this.name, this.email, this.password, this.role] = decoded;
   console.log(decoded);
   try {
     if (!this.email) {
@@ -26,7 +26,7 @@ const registerUser = async (req, res, next) => {
       );
     }
 
-    const { email, password, name, type, role } = this;
+    const { email, password, name, role } = this;
 
     if (email) {
       const existingEmail = await ContactMech.findOne({
@@ -42,7 +42,7 @@ const registerUser = async (req, res, next) => {
 
     const user = new User({
       name,
-      type: [type],
+      // type: [type],
       role,
     });
 

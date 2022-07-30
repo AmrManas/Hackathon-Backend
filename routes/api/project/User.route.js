@@ -14,6 +14,6 @@ router.get("/getAllTask", getAllTask);
 router.get("/updateTask/:id", updateTask);
 
 // QR
-router.get("/generateQR", generateQR);
+router.get("/generateQR/:id", validateAccessToken, generateQR);
 
 module.exports = router;

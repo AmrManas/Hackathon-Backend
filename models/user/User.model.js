@@ -4,6 +4,7 @@ const userSchema = new Schema(
   {
     name: { type: String, required: true },
     primary_email: { type: Schema.Types.ObjectId, ref: "ContactMech" },
+    accessToken: { type: String },
     address: {
       state: { type: String },
       city: { type: String },
@@ -14,13 +15,13 @@ const userSchema = new Schema(
       number: { type: String },
     },
     jobTitle: { type: String },
-    type: [
-      {
-        type: String,
-        default: ["customer"],
-        enum: ["customer", "developer", "agent", "builder"],
-      },
-    ],
+    // type: [
+    //   {
+    //     type: String,
+    //     default: ["customer"],
+    //     enum: ["customer", "developer", "agent", "builder"],
+    //   },
+    // ],
     role: { type: String, default: "user", enum: ["user", "admin"] },
   },
   {
