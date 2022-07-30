@@ -4,11 +4,11 @@ const generateQR = async (req, res, next) => {
   const { id } = req.headers;
   console.log(id);
   try {
-    let data = {
-      link: `http://127.0.0.1:5000?q=${id}`,
-    };
+    // let data = {
+    //   link: `http://127.0.0.1:5000?q=${id}`,
+    // };
 
-    let strData = JSON.stringify(data);
+    let strData = JSON.stringify(`http://127.0.0.1:5000?q=${id}`);
 
     qr.toString(strData, { type: "terminal" }, function (err, code) {
       if (err) return console.log("error occurred");
