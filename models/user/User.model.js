@@ -5,7 +5,6 @@ const userSchema = new Schema(
     name: { type: String, required: true },
     primary_email: { type: Schema.Types.ObjectId, ref: "ContactMech" },
     popular: { type: Boolean, default: false },
-    // TODO: Make it required true
     is_active: {
       type: String,
       default: "Pending",
@@ -29,9 +28,9 @@ const userSchema = new Schema(
     type: [
       {
         type: String,
-        default: ["customer"],
-        enum: ["customer", "developer", "agent", "builder"],
-        required: isUser,
+        default: ["user"],
+        enum: ["admin", "user"],
+        // required: isUser,
       },
     ],
     is_verified: { type: Boolean, required: true, default: false },
@@ -46,7 +45,7 @@ const User = model("User", userSchema, "user");
 
 module.exports = User;
 
-function isUser() {
-  if (this.role === "user") return true;
-  return false;
-}
+// function isUser() {
+//   if (this.role === "user") return true;
+//   return false;
+// }
