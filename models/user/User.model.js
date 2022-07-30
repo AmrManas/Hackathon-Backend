@@ -2,34 +2,51 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    name: {
+    name: { type: String, required: true },
+    primary_email: { type: Schema.Types.ObjectId, ref: "ContactMech" },
+    popular: { type: Boolean, default: false },
+    // TODO: Make it required true
+    is_active: {
       type: String,
-      required: true,
+      default: "Pending",
+      enum: ["Pending", "Accepted", "Rejected"],
     },
-    email: {
-      type: String,
-      unique: true,
-      required: true,
-    },
-    phone: {
-      type: Number,
-      unique: true,
-      required: true,
-    },
-    jobTitle: {
-      type: String,
-      required: true,
-    },
+
     address: {
-      ref: "address",
-      type: Schema.Types.ObjectId,
+      state: { type: String },
+      city: { type: String },
+      officeAddress: { type: String },
     },
+    interests: {
+      specialization: { type: String },
+      languagePreference: { type: String },
+      interest: { type: String },
+    },
+    companyName: { type: String },
+    experience: { type: String },
+    reraNumber: { type: String, unique: true },
+    employees: { type: String },
+    type: [
+      {
+        type: String,
+        default: ["customer"],
+        enum: ["customer", "developer", "agent", "builder"],
+        // required: isUser,
+      },
+    ],
+    is_verified: { type: Boolean, required: true, default: false },
+    role: { type: String, default: "user", enum: ["user", "admin"] },
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   }
 );
 
 const User = model("User", userSchema, "user");
 
 module.exports = User;
+
+// function isUser() {
+//   if (this.role === "user") return true;
+//   return false;
+// }
