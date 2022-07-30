@@ -8,7 +8,7 @@ const generateQR = require("../../../controllers/projects/generateQR");
 router.get("/getAllUser", getAllUser);
 router.post("/createTask", createTask);
 router.get("/getAllTask", getAllTask);
-router.get("/updateTask/:id", updateTask);
+router.put("/updateTask/:id", updateTask);
 
 // QR
 router.get("/generateQR", generateQR);
