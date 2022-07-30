@@ -14,13 +14,7 @@ const userSchema = new Schema(
       number: { type: String },
     },
     jobTitle: { type: String },
-    type: [
-      {
-        type: String,
-        default: ["customer"],
-        enum: ["customer", "developer", "agent", "builder"],
-      },
-    ],
+
     role: { type: String, default: "user", enum: ["user", "admin"] },
   },
   {

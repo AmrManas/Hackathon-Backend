@@ -9,6 +9,7 @@ const forgotPassword = require("../../controllers/auth/forgotPassword");
 const verifyUser = require("../../controllers/auth/verifyUser");
 const verifyOtp = require("../../controllers/auth/verifyOtp");
 const resetPassword = require("../../controllers/auth/resetPassword");
+const updateUser = require("../../controllers/users/update");
 
 router.post("/login", loginUser);
 
@@ -17,6 +18,7 @@ router.delete("/logout", logoutUser);
 router.post("/verify", verifyEmail);
 
 router.post("/register", registerUser);
+router.put("/update", updateUser);
 
 router.post("/forgotPassword", forgotPassword);
 router.post("/verifyUser", verifyUser);
