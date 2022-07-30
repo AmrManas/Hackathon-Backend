@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const authRoutes = require("./Auth.route");
-const userRoutes = require("./User.route");
+const userRoutes = require("./project/User.route");
 const propertyRoutes = require("./Property.route");
 const validateAccessToken = require("../../middlewares/jwt_validation");
 const LikeProperty = require("./likeProperty");
