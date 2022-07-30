@@ -1,6 +1,20 @@
 const router = require("express").Router();
 
-router.get("/test", (req, res) => {
+const authRoutes = require("./Auth.route");
+const userRoutes = require("./User.route");
+const propertyRoutes = require("./Property.route");
+const validateAccessToken = require("../../middlewares/jwt_validation");
+const LikeProperty = require("./likeProperty");
+const Common = require("./Common.route");
+
+router.use("/auth", authRoutes);
+router.use("/user", userRoutes);
+router.use("/property", propertyRoutes);
+router.use("/likeproperty", LikeProperty);
+router.use("/common", Common);
+
+// test route
+router.get("/test", validateAccessToken, (req, res) => {
   res.status(200).json({
     message: "success",
   });

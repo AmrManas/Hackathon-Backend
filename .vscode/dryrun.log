@@ -1,0 +1,6 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory 'c:/Users/ANknown/Documents/work/simba/property-yard/property-yard-backend'
+make: Leaving directory 'c:/Users/ANknown/Documents/work/simba/property-yard/property-yard-backend'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+ 
