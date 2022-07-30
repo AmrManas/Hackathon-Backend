@@ -1,26 +1,14 @@
 const qr = require("qrcode");
-const User = require("../../models/user/User.model");
-const createError = require("http-errors");
 
 const generateQR = async (req, res, next) => {
-  const { id } = req.params;
+  const { id } = req.headers;
+  console.log(id);
   try {
-    const checkUser = await User.findOne({
-      _id: id,
-    });
-
-    if (!checkUser) {
-      throw createError.Unauthorized(
-        "Please try again! email / password is not correct"
-      );
-    }
-
     let data = {
-      link: `http://localhost:5000/${checkUser?.accessToken}`,
+      link: `http://127.0.0.1:5000?q=${id}`,
     };
 
     let strData = JSON.stringify(data);
-    console.log(checkUser?.accessToken);
 
     qr.toString(strData, { type: "terminal" }, function (err, code) {
       if (err) return console.log("error occurred");
@@ -33,7 +21,6 @@ const generateQR = async (req, res, next) => {
       res.status(200).send({
         message: "success",
         data: code,
-        accessToken: checkUser?.accessToken,
       });
     });
   } catch (err) {
