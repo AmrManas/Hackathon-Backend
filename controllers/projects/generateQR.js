@@ -24,7 +24,9 @@ const generateQR = async (req, res, next) => {
 
     const encyptedId = btoa(decoded.payload._id);
 
-    let strData = JSON.stringify(`http://127.0.0.1:5000/${encyptedId}`);
+    let strData = JSON.stringify(
+      `http://localhost:3000/intime?intime=${encyptedId}`
+    );
     qr.toString(strData, { type: "terminal" }, function (err, code) {
       if (err) return console.log("error occurred");
       console.log(code);
