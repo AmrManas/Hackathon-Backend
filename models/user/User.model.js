@@ -11,11 +11,8 @@ const userSchema = new Schema(
       officeAddress: { type: String },
     },
     is_time_active: { type: Boolean, default: false },
-    timeSheet: {
-      date: { type: Date },
-      inTime: { type: Date },
-      outTime: { type: Date },
-    },
+    inTime: { type: Date },
+    outTime: { type: Date },
     phonumber: {
       countryCode: { type: String },
       number: { type: String },

@@ -18,6 +18,8 @@ const me = async (req, res) => {
         city: user.address.city,
         officeAddress: user.address.officeAddress,
       },
+      inTime: user.inTime,
+      outTime: user.outTime,
     },
   });
 };
