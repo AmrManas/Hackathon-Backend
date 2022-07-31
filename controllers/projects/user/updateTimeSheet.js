@@ -1,5 +1,4 @@
 const User = require("../../../models/user/User.model");
-const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 
 const updateTimeSheet = async (req, res, next) => {
@@ -7,12 +6,9 @@ const updateTimeSheet = async (req, res, next) => {
   const { body } = req;
 
   try {
-    const decoded = jwt.decode(id, { complete: true });
-    console.log("decoded.payload", decoded.payload);
-
     const updateTimeSheet = await User.findOneAndUpdate(
       {
-        _id: decoded.payload._id,
+        _id: id,
       },
       body
     );

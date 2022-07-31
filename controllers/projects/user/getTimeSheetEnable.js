@@ -10,7 +10,7 @@ const getTimeSheetEnable = async (req, res, next) => {
     console.log("decoded.payload", decoded.payload);
 
     const getTimeSheetEnable = await User.findOne({
-      _id: decoded.payload._id,
+      _id: id,
     });
 
     if (!getTimeSheetEnable) {
